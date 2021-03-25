@@ -4,7 +4,97 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/45552.png" />
     <title>What 2 Eat</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>What 2 Eat</h1>
+      <p>powered by:</p>
+      <img src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo" />
+    </header>
+    <main>
+      <section class="userLanding">
+        <h2>What's in your kitchen?</h2>
+        <form action="">
+          <label for="food" class="sr-only">What's in your kitchen</label>
+          <input type="text" name="food" id="food" placeholder="IE: Chicken" required />
+          <label for="cuisineType">Cuisine Type:</label>
+          <select name="cuisineType" id="cusineType">
+            <option value="" selected>Choose</option>
+            <option value="American">American</option>
+            <option value="Asian">Asian</option>
+            <option value="British">British</option>
+            <option value="Caribbean">Caribbean</option>
+            <option value="Central Europe">Central Europe</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Eastern Europe">Eastern Europe</option>
+            <option value="French">French</option>
+            <option value="Indian">Indian</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Kosher">Kosher</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Middle Eastern">Middle Eastern</option>
+            <option value="Nordic">Nordic</option>
+            <option value="South American">South American</option>
+            <option value="South East Asian">South East Asian</option>
+          </select>
+          <input type="submit" value="submit" />
+        </form>
+      </section>
+      <section class="userRecipes">
+        <div>
+          <ul>
+            <!-- where recipe cards will go -->
+            <li>
+              <div>
+                <img src="http://www.fillmurray.com/200/300" alt="" />
+              </div>
+              <h3>recipe name</h3>
+              <p>300 cal</p>
+              <p>vegan</p>
+              <p>serves: 6</p>
+            </li>
+            <li>
+              <div>
+                <img src="http://www.fillmurray.com/200/300" alt="" />
+              </div>
+              <h3>recipe name</h3>
+              <p>300 cal</p>
+              <p>vegan</p>
+              <p>serves: 6</p>
+            </li>
+            <li>
+              <div>
+                <img src="http://www.fillmurray.com/200/300" alt="" />
+              </div>
+              <h3>recipe name</h3>
+              <p>300 cal</p>
+              <p>vegan</p>
+              <p>serves: 6</p>
+            </li>
+            <li>
+              <div>
+                <img src="http://www.fillmurray.com/200/300" alt="" />
+              </div>
+              <h3>recipe name</h3>
+              <p>300 cal</p>
+              <p>vegan</p>
+              <p>serves: 6</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Created by: Kornthip (Tip) Sangsuriyachot & Mackenzie Howey in Association with
+        <a href="https://junocollege.com">Juno College</a>
+      </p>
+      <p>Powered by: <a href="https://www.edamam.com/">Edamam</a></p>
+    </footer>
+  </body>
 </html>
