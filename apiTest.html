@@ -7,12 +7,12 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>API test check the console</h1>
     <script>
       const url = new URL("https://api.edamam.com/search");
       url.search = new URLSearchParams({
-        q: "broccoli chicken",
+        q: "broccoli tofu",
         cuisineType : "Asian",
-        
         app_id: "c6c0de41",
         app_key: "fc1ff96c50152ca79e4079032ce2955d",
       });
@@ -21,7 +21,7 @@
           return response.json();
         })
         .then(function (jsonResponse) {
-          console.log(jsonResponse.hits[0].recipe);
+          console.log(jsonResponse.hits[7]);
         });
     </script>
   </body>
