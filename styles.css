@@ -224,5 +224,58 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+/* style asset */
+/* - yellow-green: #d6c75a (background-color)
+- green: #a19d22
+- orange: #ef6a14 (logo)
+- purple: #5c2c34 (font-color)
+- mauve: #aa6255
+- black : #000000
+- white: #FFFFFF
+Fonts:
+font-family: 'Cabin', sans-serif;
+font-family: 'Sniglet', cursive; */
+
+
 
 /* styles start here */
+html {
+  font-size: 125%;
+}
+.wrapper {
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
+}
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sniglet', cursive;
+}
+
+p {
+  font-family: 'Cabin', sans-serif;
+}
+
+
+/* landing page section */
+header {
+  height: 100vh;
+}
+
+
+/* search results section */
+
+
+
+/* footer section */
