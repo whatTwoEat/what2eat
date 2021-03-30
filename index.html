@@ -6,19 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="./assets/45552.png" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&family=Sniglet&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&family=Sniglet&display=swap"
+      rel="stylesheet"
+    />
 
     <title>What 2 Eat</title>
   </head>
   <body>
-    
     <!--  header / logos -->
     <!-- Logo Bar Section -->
     <section class="logoBar">
       <div class="wrapper">
         <h1>What2Eat</h1>
-        <p><span>powered by </span> <a href="https://www.edamam.com/"><img class="edamamLogo" src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo"/></a></p>
+        <p>
+          <span>powered by </span>
+          <a href="https://www.edamam.com/"
+            ><img class="edamamLogo" src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo"
+          /></a>
+        </p>
       </div>
     </section>
     <header>
@@ -27,10 +34,16 @@
         <h2>What's in your kitchen?</h2>
         <form action="#">
           <label for="food" class="sr-only" id="food">What's in your kitchen</label>
-          <input type="text" name="food" id="food" placeholder="IE: chicken spinach mushroom" required />
+          <input
+            type="text"
+            name="food"
+            id="food"
+            placeholder="IE: chicken spinach mushroom"
+            required
+          />
           <div class="dropDownMenu">
             <label for="cuisineType">Cuisine Type</label>
-            <select name="cuisineType" id="cusineType">
+            <select name="cuisineType" id="cuisineType">
               <option value="any" selected>Any</option>
               <option value="American">American</option>
               <option value="Asian">Asian</option>
@@ -52,20 +65,27 @@
               <option value="South East Asian">South East Asian</option>
             </select>
           </div>
+          <div class="dropDownMenu">
+            <label for="dietRes">Dietary Restrictions</label>
+            <select name="dietRes" id="dietRes">
+              <option value="none" selected>None</option>
+              <option value="vegan">Vegan</option>
+              <option value="nutFree">Nut Free</option>
+              <option value="glutenFree">Gluten Free</option>
+              <option value="dairyFree">Dairy Free</option>
+            </select>
+          </div>
           <input type="submit" value="submit" />
         </form>
       </section>
     </header>
-    
-    <main>
 
+    <main>
       <!-- Recipes section -->
       <section class="userRecipes wrapper">
         <div>
           <ul class="recipeCards">
             <!-- where recipe cards will go -->
-            
-           
           </ul>
         </div>
       </section>
