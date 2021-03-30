@@ -14,22 +14,22 @@
   <body>
     
     <!--  header / logos -->
-    <header class="wrapper">
-      <h1>What 2 Eat</h1>
-      <p>powered by:</p>
-      <img src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo" />
-    </header>
-    <!--  Search Query Section -->
-    <main>
+    <!-- Logo Bar Section -->
+    <section class="logoBar">
+      <div class="wrapper">
+        <h1>What2Eat</h1>
+        <p><span>powered by </span> <a href="https://www.edamam.com/"><img class="edamamLogo" src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo"/></a></p>
+      </div>
+    </section>
+    <header>
+      <!--  Search Query Section -->
       <section class="userLanding wrapper">
         <h2>What's in your kitchen?</h2>
         <form action="#">
-          <div>
-            <label for="food" class="sr-only" id="food">What's in your kitchen</label>
-            <input type="text" name="food" id="food" placeholder="IE: Chicken" required />
-          </div>
-          <div>
-            <label for="cuisineType">Cuisine Type:</label>
+          <label for="food" class="sr-only" id="food">What's in your kitchen</label>
+          <input type="text" name="food" id="food" placeholder="IE: chicken spinach mushroom" required />
+          <div class="dropDownMenu">
+            <label for="cuisineType">Cuisine Type</label>
             <select name="cuisineType" id="cusineType">
               <option value="any" selected>Any</option>
               <option value="American">American</option>
@@ -55,6 +55,9 @@
           <input type="submit" value="submit" />
         </form>
       </section>
+    </header>
+    
+    <main>
 
       <!-- Recipes section -->
       <section class="userRecipes wrapper">
@@ -70,10 +73,9 @@
     <footer>
       <div class="wrapper">
         <p>
-          Created by: Kornthip (Tip) Sangsuriyachot & Mackenzie Howey in Association with
+          Created by : Kornthip Sangsuriyachot & Mackenzie Howey in Association with
           <a href="https://junocollege.com">Juno College</a>
         </p>
-        <p>Powered by: <a href="https://www.edamam.com/">Edamam</a></p>
       </div>
     </footer>
     <script src="./what2Eat.js"></script>
