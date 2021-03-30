@@ -236,8 +236,6 @@ Fonts:
 font-family: 'Cabin', sans-serif;
 font-family: 'Sniglet', cursive; */
 
-
-
 /* styles start here */
 html {
   font-size: 125%;
@@ -260,14 +258,13 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
-  font-family: 'Sniglet', cursive;
+  font-family: "Sniglet", cursive;
 }
 
 p {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   letter-spacing: 0.05rem;
 }
-
 
 /*********** landing page ***********/
 /* logo bar section*/
@@ -281,8 +278,8 @@ p {
   align-items: center;
   height: 100%;
 }
-h1{
-  color:#ef6a14;
+h1 {
+  color: #ef6a14;
   font-size: 1.5rem;
   position: relative;
 }
@@ -295,11 +292,10 @@ h1::before {
   background-size: cover;
   position: absolute;
   top: 0;
-  right: -30px ;
-
+  right: -30px;
 }
 .logoBar p {
-  color: #5c2c34 ;
+  color: #5c2c34;
   font-size: 0.8rem;
   display: flex;
   align-items: center;
@@ -325,7 +321,7 @@ header {
   align-items: center;
   padding: 80px;
   border-radius: 5px;
-  background-image: linear-gradient(rgba(255, 255, 255,0.75),rgba(255, 255, 255,0.75));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
 }
 h2 {
   color: #5c2c34;
@@ -342,21 +338,21 @@ form {
 input,
 .dropDownMenu label,
 select {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   font-size: 1.2rem;
-  color: black ;
+  color: black;
   letter-spacing: 0.08rem;
 }
 input[type="text"] {
   width: 100%;
   min-width: 300px;
   flex-shrink: 1;
-  border : none;
+  border: none;
   padding: 10px;
   margin-bottom: 20px;
 }
 .dropDownMenu label {
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   color: #5c2c34;
   display: block;
   padding: 10px;
@@ -370,7 +366,6 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
 }
 
 input[type="submit"] {
@@ -379,19 +374,17 @@ input[type="submit"] {
   margin-top: 40px;
   padding: 10px;
   border: none;
-  background-color: #a19d22 ;
+  background-color: #a19d22;
   color: white;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-  background-color: #d6c75a ;
+  background-color: #d6c75a;
   color: black;
   cursor: pointer;
 }
 /*********** search results section ************/
-
-
 
 /*********** footer section ************/
 footer {
@@ -400,16 +393,14 @@ footer {
 }
 footer div {
   display: flex;
-  
 }
 footer p {
   margin: 0 auto;
-  color: #000000 ;
+  color: #000000;
   font-size: 0.8rem;
-
 }
 footer a {
-  color:#aa6255;
+  color: #aa6255;
 }
 footer a:hover,
 footer a:focus {

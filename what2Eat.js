@@ -13,25 +13,34 @@ what2EatApp.formElement = document.querySelector("form");
 what2EatApp.ulElement = document.querySelector("ul.recipeCards");
 // create what2EatApp init method
 what2EatApp.init = () => {
-  // function to listen for submission
+  what2EatApp.listenToSearchForm();
+};
+
+// function to listen for submission
+what2EatApp.listenToSearchForm = () => {
   what2EatApp.formElement.addEventListener("submit", (e) => {
     e.preventDefault();
     // user submission is stored in variable(s)
     what2EatApp.ingredientElement = document.querySelector("input");
     what2EatApp.ingredientValue = what2EatApp.ingredientElement.value;
-    what2EatApp.cuisineElement = document.querySelector("select");
+    what2EatApp.cuisineElement = document.getElementById("cuisineType");
     what2EatApp.cuisineValue = what2EatApp.cuisineElement.value;
-    console.log(what2EatApp.cuisineValue);
+
+    what2EatApp.diet = document.getElementById("dietRes");
+    what2EatApp.dietValue = what2EatApp.diet.value;
 
     // pass new search
-
-    what2EatApp.getRecipes(what2EatApp.ingredientValue, what2EatApp.cuisineValue);
+    what2EatApp.getRecipes(
+      what2EatApp.ingredientValue,
+      what2EatApp.cuisineValue,
+      what2EatApp.dietValue
+    );
   });
 };
 
 //method to fetch a response from the API with new search params from user
 
-what2EatApp.getRecipes = (ingredients, cuisine) => {
+what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
   const url = new URL(what2EatApp.apiUrl);
   if (cuisine === "any") {
     url.search = new URLSearchParams({
@@ -56,25 +65,30 @@ what2EatApp.getRecipes = (ingredients, cuisine) => {
       return response.json();
     })
     .then(function (jsonResponse) {
-      //array of objects containing recipes data
       const recipeOptionsArray = jsonResponse.hits;
-      console.log(recipeOptionsArray);
-
-      // filter by health label and put in each array ie.vegan, nut-free, gluten-free, dairy-free
-      //filtered array of vegan recipes
-      const veganArray = what2EatApp.filterResults(recipeOptionsArray, "Vegan");
-      //filtered array of nut-free recipes
-      const nutFreeArray = what2EatApp.filterResults(
-        what2EatApp.filterResults(recipeOptionsArray, "Peanut-Free"),
-        "Tree-Nut-Free"
-      );
-      //filtered array of gluten-free recipes
-      const glutenFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Gluten-Free");
-      //filtered array of dairy-free recipes
-      const dairyFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Dairy-Free");
-
-      //append recipes
-      what2EatApp.showRecipeCard(recipeOptionsArray);
+      if (diet === "none") {
+        //append recipes
+        what2EatApp.showRecipeCard(recipeOptionsArray);
+      } else if (diet === "vegan") {
+        //filter vegan recipes
+        const veganArray = what2EatApp.filterResults(recipeOptionsArray, "Vegan");
+        what2EatApp.showRecipeCard(veganArray);
+      } else if (diet === "nutFree") {
+        //filter nut free recipes
+        const nutFreeArray = what2EatApp.filterResults(
+          what2EatApp.filterResults(recipeOptionsArray, "Peanut-Free"),
+          "Tree-Nut-Free"
+        );
+        what2EatApp.showRecipeCard(nutFreeArray);
+      } else if (diet === "glutenFree") {
+        //filtered gluten-free recipes
+        const glutenFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Gluten-Free");
+        what2EatApp.showRecipeCard(glutenFreeArray);
+      } else if (diet === "dairyFree") {
+        //filtered dairy-free recipes
+        const dairyFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Dairy-Free");
+        what2EatApp.showRecipeCard(dairyFreeArray);
+      }
     })
     .catch(() => {
       //clear previous search
@@ -111,18 +125,16 @@ what2EatApp.showRecipeCard = (array) => {
     recipeTitle.textContent = recipeObject.recipe.label;
 
     // round the calories down
-    const calories = recipeObject.recipe.calories;
+    let calories = recipeObject.recipe.calories;
     const roundedCalories = Math.floor(calories);
     const recipeCalories = document.createElement("p");
-    recipeCalories.textContent = roundedCalories;
+    recipeCalories.textContent = `${roundedCalories} calories`;
 
     const recipeIngredientNum = document.createElement("p");
-    recipeIngredientNum.textContent = recipeObject.recipe.ingredientLines.length;
-
-    console.log(recipeIngredientNum);
+    recipeIngredientNum.textContent = `${recipeObject.recipe.ingredientLines.length} Ingredients`;
 
     const recipeYield = document.createElement("p");
-    recipeYield.textContent = recipeObject.recipe.yield;
+    recipeYield.textContent = `Serves: ${recipeObject.recipe.yield}`;
 
     // put the anchor and image in the div container
     recipeImageDiv.appendChild(recipeAnchor);
@@ -137,21 +149,6 @@ what2EatApp.showRecipeCard = (array) => {
 
     // put the li into the ul & display on page
     ulElement.appendChild(recipeCard);
-
-    //   const { url, image, label, calories, ingredientLines, yield } = recipeObject.recipe;
-    // recipeCard.innerHTML = `
-    //     <div>
-    //         <a href=${url} target="_blank">
-    //         <img src=${image} alt=${label}/>
-    //         </a>
-    //     </div>
-    //     <h3>${label}</h3>
-    //     <p>${Math.floor(calories)} calories</p>
-    //     <p>${ingredientLines.length} ingredients</p>
-    //     <p>serves: ${yield}</p>
-    // `;
-    // // append elements to display on page
-    // what2EatApp.ulElement.append(recipeCard);
   });
 };
 
