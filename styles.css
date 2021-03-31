@@ -224,7 +224,8 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-/* style asset */
+
+/******************** style asset ***********************/
 /* - yellow-green: #d6c75a (background-color)
 - green: #a19d22
 - orange: #ef6a14 (logo)
@@ -236,7 +237,7 @@ Fonts:
 font-family: 'Cabin', sans-serif;
 font-family: 'Sniglet', cursive; */
 
-/* styles start here */
+/****************** styles start here ********************/
 html {
   font-size: 125%;
 }
@@ -385,6 +386,51 @@ input[type="submit"]:focus {
   cursor: pointer;
 }
 /*********** search results section ************/
+
+main {
+  background-image: url(./assets/redWhitePlaid.gif);
+  background-size: cover;
+}
+
+main ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+main li {
+  width: calc(95% / 4);
+  min-width: 300px;
+  background-color: rgba(243, 236, 186, 0.9);
+  border: 1px solid black;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 11px;
+  margin: 20px 0 20px;
+}
+
+main img {
+  border: 1px solid black;
+  border-radius: 3%;
+  width: 100%;
+}
+
+main h3 {
+  text-align: center;
+  color: #5c2c34;
+}
+
+main p {
+  padding: 5px;
+  margin: 0;
+  color: #ef6a14;
+}
 
 /*********** footer section ************/
 footer {
