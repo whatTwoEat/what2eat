@@ -7,10 +7,9 @@ what2EatApp.apiUrl = "https://api.edamam.com/search";
 what2EatApp.apiId = "c6c0de41";
 what2EatApp.apiKey = "fc1ff96c50152ca79e4079032ce2955d";
 
-//form element
-what2EatApp.formElement = document.querySelector("form");
 //ul element
 what2EatApp.ulElement = document.querySelector("ul.recipeCards");
+
 // create what2EatApp init method
 what2EatApp.init = () => {
   what2EatApp.listenToSearchForm();
@@ -18,23 +17,27 @@ what2EatApp.init = () => {
 
 // function to listen for submission
 what2EatApp.listenToSearchForm = () => {
-  what2EatApp.formElement.addEventListener("submit", (e) => {
+    //form element
+  const formElement = document.querySelector("form");
+  formElement.addEventListener("submit", (e) => {
     e.preventDefault();
     // user submission is stored in variable(s)
-    what2EatApp.ingredientElement = document.querySelector("input");
-    what2EatApp.ingredientValue = what2EatApp.ingredientElement.value;
-    what2EatApp.cuisineElement = document.getElementById("cuisineType");
-    what2EatApp.cuisineValue = what2EatApp.cuisineElement.value;
+    const ingredientElement = document.querySelector("input");
+    const ingredientValue = ingredientElement.value;
+    const cuisineElement = document.getElementById("cuisineType");
+    const cuisineValue = cuisineElement.value;
+    const diet = document.getElementById("dietRes");
+    const dietValue = diet.value;
 
-    what2EatApp.diet = document.getElementById("dietRes");
-    what2EatApp.dietValue = what2EatApp.diet.value;
-
-    // pass new search
+    // pass search params and search
     what2EatApp.getRecipes(
-      what2EatApp.ingredientValue,
-      what2EatApp.cuisineValue,
-      what2EatApp.dietValue
+      ingredientValue,
+      cuisineValue,
+      dietValue
     );
+
+    //empty search input field
+    ingredientElement.value = "";
   });
 };
 
@@ -65,6 +68,11 @@ what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
       return response.json();
     })
     .then(function (jsonResponse) {
+      // //if no results found
+      // if (jsonResponse.hits.length === 0) {
+      //   console.log('recipes not found');
+      // }
+      //display results base on diet options
       const recipeOptionsArray = jsonResponse.hits;
       if (diet === "none") {
         //append recipes
@@ -97,44 +105,43 @@ what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
     });
 };
 
-//helping function to filter result base on label
+//function to filter result base on label
 what2EatApp.filterResults = (array, label) => {
   return array.filter((arrayObject) => arrayObject.recipe.healthLabels.includes(label));
 };
 
 //function to append results
 what2EatApp.showRecipeCard = (array) => {
-  const ulElement = document.querySelector("ul");
   //clear previous search
-  ulElement.innerHTML = "";
+  what2EatApp.ulElement.innerHTML = "";
   // create loop for each recipe
   array.forEach((recipeObject) => {
+    const {url,image,label,calories,ingredientLines,yield} = recipeObject.recipe;
     // create elements for responses
     const recipeCard = document.createElement("li");
     const recipeImageDiv = document.createElement("div");
 
     const recipeAnchor = document.createElement("a");
-    recipeAnchor.href = recipeObject.recipe.url;
+    recipeAnchor.href = url;
     recipeAnchor.target = "_blank";
 
     const recipeImage = document.createElement("img");
-    recipeImage.src = recipeObject.recipe.image;
-    recipeImage.alt = recipeObject.recipe.label;
+    recipeImage.src = image;
+    recipeImage.alt = label;
 
     const recipeTitle = document.createElement("h3");
-    recipeTitle.textContent = recipeObject.recipe.label;
+    recipeTitle.textContent = label;
 
-    // round the calories down
-    let calories = recipeObject.recipe.calories;
+    // round the calories down to no decimal point
     const roundedCalories = Math.floor(calories);
     const recipeCalories = document.createElement("p");
     recipeCalories.textContent = `${roundedCalories} calories`;
 
     const recipeIngredientNum = document.createElement("p");
-    recipeIngredientNum.textContent = `${recipeObject.recipe.ingredientLines.length} Ingredients`;
+    recipeIngredientNum.textContent = `${ingredientLines.length} Ingredients`;
 
     const recipeYield = document.createElement("p");
-    recipeYield.textContent = `Serves: ${recipeObject.recipe.yield}`;
+    recipeYield.textContent = `Serves: ${yield}`;
 
     // put the anchor and image in the div container
     recipeImageDiv.appendChild(recipeAnchor);
@@ -148,7 +155,7 @@ what2EatApp.showRecipeCard = (array) => {
     recipeCard.appendChild(recipeYield);
 
     // put the li into the ul & display on page
-    ulElement.appendChild(recipeCard);
+    what2EatApp.ulElement.appendChild(recipeCard);
   });
 };
 
