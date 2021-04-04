@@ -64,40 +64,32 @@ what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
       return response.json();
     })
     .then(function (jsonResponse) {
-      // //if no results found
-      // if (jsonResponse.hits.length === 0) {
-      //   console.log('recipes not found');
-      // }
+      
       //display results base on diet options
       const recipeOptionsArray = jsonResponse.hits;
       if (diet === "none") {
         //append recipes
-        what2EatApp.showRecipeCard(recipeOptionsArray);
+        what2EatApp.modalBox(recipeOptionsArray);
       } else if (diet === "vegan") {
         //filter vegan recipes
         const veganArray = what2EatApp.filterResults(recipeOptionsArray, "Vegan");
-        what2EatApp.showRecipeCard(veganArray);
+        what2EatApp.modalBox(veganArray);
       } else if (diet === "nutFree") {
         //filter nut free recipes
         const nutFreeArray = what2EatApp.filterResults(
           what2EatApp.filterResults(recipeOptionsArray, "Peanut-Free"),
           "Tree-Nut-Free"
         );
-        what2EatApp.showRecipeCard(nutFreeArray);
+        what2EatApp.modalBox(nutFreeArray);
       } else if (diet === "glutenFree") {
         //filtered gluten-free recipes
         const glutenFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Gluten-Free");
-        what2EatApp.showRecipeCard(glutenFreeArray);
+        what2EatApp.modalBox(glutenFreeArray);
       } else if (diet === "dairyFree") {
         //filtered dairy-free recipes
         const dairyFreeArray = what2EatApp.filterResults(recipeOptionsArray, "Dairy-Free");
-        what2EatApp.showRecipeCard(dairyFreeArray);
+        what2EatApp.modalBox(dairyFreeArray);
       }
-    })
-    .catch(() => {
-      //clear previous search
-      what2EatApp.ulElement.innerHTML = "<p>not found</p>";
-      console.log("not getting recipe");
     });
 };
 
@@ -106,13 +98,28 @@ what2EatApp.filterResults = (array, label) => {
   return array.filter((arrayObject) => arrayObject.recipe.healthLabels.includes(label));
 };
 
+// functin  to pop modal box if no results found else show recipe card
+what2EatApp.modalBox = (array) => {
+  if (array.length === 0) {
+    const modalAlert = document.getElementById('resultNotFound');
+    modalAlert.classList.add('activate');
+    const closeButton = document.getElementById('closeButton');
+    closeButton.onclick = () => {
+      modalAlert.classList.remove('activate');
+    }
+  } else {
+    what2EatApp.showRecipeCard(array);
+  }
+}
+
 //function to append results
 what2EatApp.showRecipeCard = (array) => {
   //clear previous search
   what2EatApp.ulElement.innerHTML = "";
   // create loop for each recipe
   array.forEach((recipeObject) => {
-    const { url, image, label, calories, ingredientLines, yield } = recipeObject.recipe;
+    const {url,image,label,calories,ingredientLines,yield} = recipeObject.recipe;
+    
     // create elements for responses
     const recipeCard = document.createElement("li");
     const recipeImageDiv = document.createElement("div");
@@ -151,7 +158,7 @@ what2EatApp.showRecipeCard = (array) => {
     recipeAnchor.appendChild(recipeCalories);
     recipeAnchor.appendChild(recipeIngredientNum);
     recipeAnchor.appendChild(recipeYield);
-
+    
     // put the li into the ul & display on page
     what2EatApp.ulElement.appendChild(recipeCard);
   });
