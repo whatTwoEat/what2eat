@@ -388,13 +388,11 @@ input[type="submit"]:focus {
 /*********** search results section ************/
 
 main {
-  background-image: url(./assets/redWhitePlaid.gif);
-  background-size: cover;
+  background: #aa6255;
 }
 
 main ul {
   margin: 0;
-  padding: 0;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -402,22 +400,27 @@ main ul {
 }
 
 main li {
-  width: calc(95% / 4);
+  width: calc(95% / 4 - 160px);
   min-width: 300px;
-  background-color: rgba(243, 236, 186, 0.9);
-  border: 1px solid black;
-  border-radius: 3%;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 80px 20px 20px;
+  padding: 30px;
+}
+
+main li:hover {
+  box-shadow: -5px 5px 20px black;
+}
+
+main a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px 11px;
-  margin: 20px 0 20px;
 }
 
 main img {
-  border: 1px solid black;
-  border-radius: 3%;
+  border-radius: 5px;
   width: 100%;
 }
 
