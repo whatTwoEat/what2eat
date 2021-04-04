@@ -17,7 +17,7 @@ what2EatApp.init = () => {
 
 // function to listen for submission
 what2EatApp.listenToSearchForm = () => {
-    //form element
+  //form element
   const formElement = document.querySelector("form");
   formElement.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -30,11 +30,7 @@ what2EatApp.listenToSearchForm = () => {
     const dietValue = diet.value;
 
     // pass search params and search
-    what2EatApp.getRecipes(
-      ingredientValue,
-      cuisineValue,
-      dietValue
-    );
+    what2EatApp.getRecipes(ingredientValue, cuisineValue, dietValue);
 
     //empty search input field
     ingredientElement.value = "";
@@ -116,7 +112,7 @@ what2EatApp.showRecipeCard = (array) => {
   what2EatApp.ulElement.innerHTML = "";
   // create loop for each recipe
   array.forEach((recipeObject) => {
-    const {url,image,label,calories,ingredientLines,yield} = recipeObject.recipe;
+    const { url, image, label, calories, ingredientLines, yield } = recipeObject.recipe;
     // create elements for responses
     const recipeCard = document.createElement("li");
     const recipeImageDiv = document.createElement("div");
@@ -143,16 +139,18 @@ what2EatApp.showRecipeCard = (array) => {
     const recipeYield = document.createElement("p");
     recipeYield.textContent = `Serves: ${yield}`;
 
-    // put the anchor and image in the div container
-    recipeImageDiv.appendChild(recipeAnchor);
-    recipeAnchor.appendChild(recipeImage);
+    // put the image in the div container
+    recipeImageDiv.appendChild(recipeImage);
 
-    // put the div and other info in the li
-    recipeCard.appendChild(recipeImageDiv);
-    recipeCard.appendChild(recipeTitle);
-    recipeCard.appendChild(recipeCalories);
-    recipeCard.appendChild(recipeIngredientNum);
-    recipeCard.appendChild(recipeYield);
+    // put the anchor in the li
+    recipeCard.appendChild(recipeAnchor);
+
+    // put the div and other info in the anchor
+    recipeAnchor.appendChild(recipeImageDiv);
+    recipeAnchor.appendChild(recipeTitle);
+    recipeAnchor.appendChild(recipeCalories);
+    recipeAnchor.appendChild(recipeIngredientNum);
+    recipeAnchor.appendChild(recipeYield);
 
     // put the li into the ul & display on page
     what2EatApp.ulElement.appendChild(recipeCard);
