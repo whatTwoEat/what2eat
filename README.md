@@ -7,5 +7,5 @@ powered by EDAMAM API
 tools
 | REST API | CSS | HTML |
 
-design quideline
+design guideline
 https://docs.google.com/document/d/1fsRFVyCt2AipycU-ZuipiyfcLNqaF09LtablJXUOSZQ/
