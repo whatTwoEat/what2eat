@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&family=Sniglet&display=swap"
       rel="stylesheet"
     />
-
+    <script src="https://kit.fontawesome.com/47d553d144.js" crossorigin="anonymous"></script>
     <title>What 2 Eat</title>
   </head>
   <body>
@@ -20,7 +20,7 @@
     <section class="logoBar">
       <div class="wrapper">
         <h1>What2Eat</h1>
-        <p>
+        <p class="apiLink">
           <span>powered by </span>
           <a href="https://www.edamam.com/"
             ><img class="edamamLogo" src="./assets/Edamam_logo_full_RGB.png" alt="greenEdamam logo"
@@ -77,6 +77,13 @@
           </div>
           <input type="submit" value="submit" />
         </form>
+        <!-- modal box to alert that the result not found -->
+        <div id="resultNotFound" class="resultNotFound">
+          <div class="notFoundContent">
+              <p class="notFoundText">Recipe Not Found</p>
+              <p id="closeButton" class="closeButton"><i class="far fa-times-circle"></i></p>
+        </div>
+      </div>
       </section>
     </header>
 
