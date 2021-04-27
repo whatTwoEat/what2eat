@@ -9,7 +9,7 @@ Tools
 | REST API | CSS | HTML |
 
 Design guideline
-https://docs.google.com/document/d/1fsRFVyCt2AipycU-ZuipiyfcLNqaF09LtablJXUOSZQ/
+[here](https://docs.google.com/document/d/1EfnvK5CDgnTLftdmQtemqvvj_7ITvtc18LB7RvZQjeY/edit?usp=sharing)
 
 View live
-https://whattwoeat.github.io/what2eat/
+[here](https://whattwoeat.github.io/what2eat/)
