@@ -38,7 +38,6 @@ what2EatApp.listenToSearchForm = () => {
 };
 
 //method to fetch a response from the API with new search params from user
-
 what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
   const url = new URL(what2EatApp.apiUrl);
   if (cuisine === "any") {
@@ -64,18 +63,17 @@ what2EatApp.getRecipes = (ingredients, cuisine, diet) => {
       return response.json();
     })
     .then(function (jsonResponse) {
-      
       //display results base on diet options
       const recipeOptionsArray = jsonResponse.hits;
       if (diet === "none") {
         //append recipes
         what2EatApp.modalBox(recipeOptionsArray);
       } else if (diet === "vegan") {
-        //filter vegan recipes
+        //filtered vegan recipes
         const veganArray = what2EatApp.filterResults(recipeOptionsArray, "Vegan");
         what2EatApp.modalBox(veganArray);
       } else if (diet === "nutFree") {
-        //filter nut free recipes
+        //filtered nut free recipes
         const nutFreeArray = what2EatApp.filterResults(
           what2EatApp.filterResults(recipeOptionsArray, "Peanut-Free"),
           "Tree-Nut-Free"
@@ -98,9 +96,12 @@ what2EatApp.filterResults = (array, label) => {
   return array.filter((arrayObject) => arrayObject.recipe.healthLabels.includes(label));
 };
 
-// functin  to pop modal box if no results found else show recipe card
+// function  to pop modal box if no results found else show recipe card
 what2EatApp.modalBox = (array) => {
   if (array.length === 0) {
+    //clear previous result if any
+    what2EatApp.ulElement.innerHTML = "";
+    //alert result not found
     const modalAlert = document.getElementById('resultNotFound');
     modalAlert.classList.add('activate');
     const closeButton = document.getElementById('closeButton');
@@ -110,6 +111,12 @@ what2EatApp.modalBox = (array) => {
   } else {
     what2EatApp.showRecipeCard(array);
   }
+}
+
+//function to scroll to main section
+what2EatApp.scrollToMain =() => {
+  const main = document.querySelector('main');
+  main.scrollIntoView();
 }
 
 //function to append results
@@ -161,6 +168,9 @@ what2EatApp.showRecipeCard = (array) => {
     
     // put the li into the ul & display on page
     what2EatApp.ulElement.appendChild(recipeCard);
+
+    // scroll to main section to view the result
+    what2EatApp.scrollToMain();
   });
 };
 
